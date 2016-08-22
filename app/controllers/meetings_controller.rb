@@ -9,6 +9,7 @@ class MeetingsController < ApplicationController
   end
 
   def new
+    @meeting = Meeting.new
     render 'new.html.erb'
   end
 
