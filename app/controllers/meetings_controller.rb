@@ -21,6 +21,7 @@ class MeetingsController < ApplicationController
       notes: params[:notes]
     )
     if @meeting.save
+      flash[:success] = "Meeting successfully created!"
       redirect_to "/meetings/#{@meeting.id}"
     else
       render 'new.html.erb'
