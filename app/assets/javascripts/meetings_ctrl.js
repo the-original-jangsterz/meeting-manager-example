@@ -6,6 +6,11 @@
       $scope.meetings = response.data;
     });
 
+    $scope.changeOrderAttribute = function(inputAttribute) {
+      $scope.orderAttribute = inputAttribute;
+      $scope.isOrderDescending = !$scope.isOrderDescending;
+    };
+
     window.$scope = $scope;
   });
 })();

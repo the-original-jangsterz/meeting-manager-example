@@ -5,7 +5,9 @@
     <label>Search by name:</label>
     <input ng-model="nameFilter">
 
-    <div ng-repeat="meeting in meetings | filter: {name: nameFilter}">
+    <button ng-click="changeOrderAttribute('startTime')">Sort by start time</button>
+
+    <div ng-repeat="meeting in meetings | filter: {name: nameFilter} | orderBy:orderAttribute:isOrderDescending">
       <h3><a href="/meetings/{{ meeting.id }}">{{ meeting.name }}</a></h3>
       <p>
         Tags:
