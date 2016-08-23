@@ -10,6 +10,7 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
+    @tags = Tag.all
     render 'new.html.erb'
   end
 
@@ -22,9 +23,19 @@ class MeetingsController < ApplicationController
       notes: params[:notes]
     )
     if @meeting.save
+      if params[:tag_ids]
+        params[:tag_ids].each do |tag_id|
+          meeting_tag = MeetingTag.new(
+            meeting_id: @meeting.id,
+            tag_id: tag_id
+          )
+          meeting_tag.save
+        end
+      end
       flash[:success] = "Meeting successfully created!"
       redirect_to "/meetings/#{@meeting.id}"
     else
+      @tags = Tag.all
       render 'new.html.erb'
     end
   end
