@@ -2,7 +2,7 @@
 
 (function() {
   angular.module('app').controller('meetingsCtrl', function($scope) {
-    $scope.message = "Hello world";
+    $scope.message = "Goodbye world";
 
     window.$scope = $scope;
   });
